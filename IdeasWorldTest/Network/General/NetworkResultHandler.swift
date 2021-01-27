@@ -8,15 +8,13 @@
 import Foundation
 
 protocol NetworkResultHandler: AnyObject {
-    ///  <#Description#>
+    ///  Called on a successful request.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
-    /// - Returns: <#Returns Description#>
-    func requestDidSuccessful(_ data: Data)
+    /// - Parameter data: Result Data
+    func requestFailedWithResult(_ result: Data)
     
-    ///  <#Description#>
+    ///  Called when an error occurs when sending a request.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
-    /// - Returns: <#Returns Description#>
-    func requestDidFailed(_ error: NetworkingError)
+    /// - Parameter error: Network error.
+    func requestFailedWithError(_ error: NetworkingError)
 }

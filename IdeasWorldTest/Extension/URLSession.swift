@@ -8,10 +8,12 @@
 import Foundation
 
 extension URLSession {
-    ///  <#Description#>
+    /// Creates a data task.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
-    /// - Returns: <#Returns Description#>
+    /// - Parameter request:  A URL request.
+    /// - Parameter onResult: Called when the task succeeded.
+    /// - Parameter onError: Called when the task failed.
+    /// - Returns: `URLSessionDataTask`
     func dataTask(
         with request: URLRequest,
         onResult: @escaping (Data) -> Void,

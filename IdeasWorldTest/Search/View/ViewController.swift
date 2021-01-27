@@ -32,11 +32,11 @@ class ViewController: UIViewController, NetworkResultHandler {
         debugPrint(search.asDictionary)
     }
     
-    func requestDidSuccessful(_ data: Data) {
+    func requestFailedWithResult(_ data: Data) {
         debugPrint(data)
     }
     
-    func requestDidFailed(_ error: NetworkingError) {
+    func requestFailedWithError(_ error: NetworkingError) {
         print("||")
         debugPrint(error)
     }

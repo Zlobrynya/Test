@@ -10,10 +10,6 @@ import Foundation
 protocol ParametersProtocol: Encodable {}
 
 extension ParametersProtocol {
-    ///  <#Description#>
-    ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
-    /// - Returns: <#Returns Description#>
     var asDictionary: [String: Any] {
         let mirror = Mirror(reflecting: self)
         let dict = Dictionary(

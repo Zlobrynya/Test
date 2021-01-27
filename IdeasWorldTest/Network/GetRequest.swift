@@ -16,6 +16,7 @@ enum ErrorRequest: LocalizedError {
 }
 
 protocol RequestProtocol {
+    ///  Sending a request.
     func send()
 }
 
@@ -61,10 +62,10 @@ class GetRequest: RequestProtocol {
         task = urlSession.dataTask(
             with: request,
             onResult: { [weak self] in
-                self?.resultHandler?.requestDidSuccessful($0)
+                self?.resultHandler?.requestFailedWithResult($0)
             },
             onError: { [weak self] in
-                self?.resultHandler?.requestDidFailed($0)
+                self?.resultHandler?.requestFailedWithError($0)
             }
         )
         task?.resume()

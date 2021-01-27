@@ -8,7 +8,17 @@
 import Foundation
 
 protocol NetworkFactoryProtocol {
-    func get<T: ParametersProtocol>(url: URL, parameters: T, resultHandler: NetworkResultHandler?) throws -> RequestProtocol
+    ///  Creates a get request.
+    ///
+    /// - Parameter url: The address of the request.
+    /// - Parameter parameters: Parameters for the request.
+    /// - Parameter resultHandler: The result handler of the request..
+    /// - Returns: Returns a get request.
+    func get<T: ParametersProtocol>(
+        url: URL,
+        parameters: T,
+        resultHandler: NetworkResultHandler?
+    ) throws -> RequestProtocol
 }
 
 struct NetworkFactory: NetworkFactoryProtocol {
