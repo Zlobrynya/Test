@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkFactoryProtocol {
+protocol NetworkRequestFactoryProtocol {
     ///  Creates a get request.
     ///
     /// - Parameter url: The address of the request.
@@ -21,7 +21,7 @@ protocol NetworkFactoryProtocol {
     ) throws -> RequestProtocol
 }
 
-struct NetworkFactory: NetworkFactoryProtocol {
+struct NetworkRequestFactory: NetworkRequestFactoryProtocol {
 
     // MARK: - Public Properties
 

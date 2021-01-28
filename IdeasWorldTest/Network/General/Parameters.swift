@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ParametersProtocol: Encodable {}
+protocol ParametersProtocol {}
 
 extension ParametersProtocol {
     var asDictionary: [String: Any] {
