@@ -54,6 +54,7 @@ class GetRequest: RequestProtocol {
         } else {
             request = URLRequest(url: url)
         }
+        Log.debug(request.url)
         request.httpMethod = TypeRequest.get.rawValue
     }
 

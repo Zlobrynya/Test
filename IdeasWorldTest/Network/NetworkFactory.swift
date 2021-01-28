@@ -21,6 +21,12 @@ protocol NetworkRequestFactoryProtocol {
     ) throws -> RequestProtocol
 }
 
+extension NetworkRequestFactoryProtocol {
+    func get(url: URL, resultHandler: NetworkResultHandler?) throws -> RequestProtocol {
+        try get(url: url, parameters: EmptyParameters(), resultHandler: resultHandler)
+    }
+}
+
 struct NetworkRequestFactory: NetworkRequestFactoryProtocol {
 
     // MARK: - Public Properties
@@ -30,6 +36,6 @@ struct NetworkRequestFactory: NetworkRequestFactoryProtocol {
         parameters: T,
         resultHandler: NetworkResultHandler? = nil
     ) throws -> RequestProtocol {
-       try GetRequest(url: url, parameters: parameters, resultHandler: resultHandler)
+        try GetRequest(url: url, parameters: parameters, resultHandler: resultHandler)
     }
 }

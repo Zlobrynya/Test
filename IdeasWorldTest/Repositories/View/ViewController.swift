@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let viewModel = RepositoriesViewModel()
+    let viewModel = UserViewModel()
 
     // MARK: - Lifecycle
 
@@ -20,6 +20,6 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.search(forName: "test")
+        viewModel.user(forUserName: "Zlobrynya")
     }
 }
