@@ -43,6 +43,7 @@
 		52B3161725C3399C0021EA4D /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3161625C3399C0021EA4D /* UserConstants.swift */; };
 		52B3161F25C33B500021EA4D /* UserPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3161E25C33B500021EA4D /* UserPlaceholder.swift */; };
 		52B3162425C33BC40021EA4D /* UserNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162325C33BC40021EA4D /* UserNetworkClient.swift */; };
+		52B3162A25C340C40021EA4D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162925C340C40021EA4D /* UserRepository.swift */; };
 		52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11EFC25C1F29400677012 /* UserFactory.swift */; };
 		52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */; };
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
@@ -108,6 +109,7 @@
 		52B3161625C3399C0021EA4D /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		52B3161E25C33B500021EA4D /* UserPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPlaceholder.swift; sourceTree = "<group>"; };
 		52B3162325C33BC40021EA4D /* UserNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkClient.swift; sourceTree = "<group>"; };
+		52B3162925C340C40021EA4D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		52D11EFC25C1F29400677012 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstant.swift; sourceTree = "<group>"; };
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		524BCA2325C1D1CE00754DE2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				52B3163125C342230021EA4D /* Repository */,
 				523CC3C625C31E35001A118E /* NetworkClient */,
 				52D11F0F25C1F53400677012 /* Model */,
 				524BCA2425C1D1DC00754DE2 /* View */,
@@ -301,6 +304,7 @@
 		52B3160825C3394F0021EA4D /* User */ = {
 			isa = PBXGroup;
 			children = (
+				52B3162825C340A00021EA4D /* Repository */,
 				52B3160A25C339660021EA4D /* View */,
 				52B3160925C339590021EA4D /* NetworkClient */,
 				52B3160B25C339710021EA4D /* UserViewModel.swift */,
@@ -323,6 +327,21 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		52B3162825C340A00021EA4D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				52B3162925C340C40021EA4D /* UserRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		52B3163125C342230021EA4D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		52D11F0F25C1F53400677012 /* Model */ = {
@@ -491,6 +510,7 @@
 				52621EE725C1D3AB00AC7BAA /* EmptyParameters.swift in Sources */,
 				52B315CF25C321C80021EA4D /* RepositoriesConstantsProtocol.swift in Sources */,
 				524BC9A125C1BAF600754DE2 /* AppDelegate.swift in Sources */,
+				52B3162A25C340C40021EA4D /* UserRepository.swift in Sources */,
 				52B315DA25C3230B0021EA4D /* Api.swift in Sources */,
 				524BCA0D25C1CB2F00754DE2 /* NetworkFactory.swift in Sources */,
 				52B315E425C325E50021EA4D /* DiContainer.swift in Sources */,
