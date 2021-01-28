@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let viewModel = SearchViewModel()
+    let viewModel = RepositoriesViewModel()
 
     // MARK: - Lifecycle
 
