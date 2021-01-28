@@ -16,5 +16,5 @@ protocol NetworkResultHandler: AnyObject {
     ///  Called when an error occurs when sending a request.
     ///
     /// - Parameter error: Network error.
-    func requestFailedWithError(_ error: NetworkingError)
+    func requestFailedWithError(_ error: Error)
 }

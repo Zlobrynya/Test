@@ -38,7 +38,7 @@ class CoreDataStore: CoreDataStoreProtocol {
     
     // MARK: - Lifecycle
 
-    init(constants: CoreDataConstantProtocol) {
+    init(constants: CoreDataConstantProtocol = CoreDataConstant()) {
         self.constants = constants
     }
 

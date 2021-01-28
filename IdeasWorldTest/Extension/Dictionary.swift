@@ -13,8 +13,13 @@ extension Dictionary where Key == String, Value == Any {
     /// - Returns: array `URLQueryItem`
     func asURLQueryItem() -> [URLQueryItem] {
         compactMap { key, value in
-            guard let value = value as? String else { return nil }
-            return URLQueryItem(name: key, value: value)
+            if let valueAsString = value as? String { return URLQueryItem(name: key, value: valueAsString) }
+            let mirror = Mirror(reflecting: value)
+            guard mirror.displayStyle == .optional else {
+                return URLQueryItem(name: key, value: String(describing: value))
+            }
+            guard let value = mirror.children.first?.value else { return nil }
+            return URLQueryItem(name: key, value: String(describing: value))
         }
     }
 }

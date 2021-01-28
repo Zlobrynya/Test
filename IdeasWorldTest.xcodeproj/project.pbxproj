@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		523CC3C825C31E4A001A118E /* RepositoriesNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523CC3C725C31E4A001A118E /* RepositoriesNetworkClient.swift */; };
 		524BC9A125C1BAF600754DE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC9A025C1BAF600754DE2 /* AppDelegate.swift */; };
 		524BC9A325C1BAF600754DE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC9A225C1BAF600754DE2 /* SceneDelegate.swift */; };
 		524BC9A525C1BAF600754DE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC9A425C1BAF600754DE2 /* ViewController.swift */; };
@@ -22,7 +23,7 @@
 		524BCA0D25C1CB2F00754DE2 /* NetworkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCA0C25C1CB2F00754DE2 /* NetworkFactory.swift */; };
 		524BCA1225C1CC4200754DE2 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCA1125C1CC4200754DE2 /* Parameters.swift */; };
 		524BCA1725C1CFBC00754DE2 /* NetworkResultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCA1625C1CFBC00754DE2 /* NetworkResultHandler.swift */; };
-		524BCA2625C1D20400754DE2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCA2525C1D20400754DE2 /* SearchViewModel.swift */; };
+		524BCA2625C1D20400754DE2 /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCA2525C1D20400754DE2 /* RepositoriesViewModel.swift */; };
 		52621EE725C1D3AB00AC7BAA /* EmptyParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621EE625C1D3AB00AC7BAA /* EmptyParameters.swift */; };
 		52621EEF25C1D52E00AC7BAA /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621EEE25C1D52E00AC7BAA /* SearchParameters.swift */; };
 		52621EF425C1D5E100AC7BAA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621EF325C1D5E000AC7BAA /* Dictionary.swift */; };
@@ -32,6 +33,12 @@
 		52621F1725C1EDF700AC7BAA /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F1625C1EDF700AC7BAA /* RepositoryFactory.swift */; };
 		52621F1C25C1EE2400AC7BAA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F1B25C1EE2400AC7BAA /* Repository.swift */; };
 		52621F2525C1EEF300AC7BAA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F2425C1EEF300AC7BAA /* User.swift */; };
+		52B315CF25C321C80021EA4D /* RepositoriesNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */; };
+		52B315D525C321FD0021EA4D /* Api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B315D425C321FD0021EA4D /* Api.plist */; };
+		52B315DA25C3230B0021EA4D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315D925C3230B0021EA4D /* Api.swift */; };
+		52B315DF25C324230021EA4D /* DecoderPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315DE25C324230021EA4D /* DecoderPlist.swift */; };
+		52B315E425C325E50021EA4D /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315E325C325E50021EA4D /* DiContainer.swift */; };
+		52B315F525C32C8E0021EA4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315F425C32C8E0021EA4D /* Log.swift */; };
 		52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11EFC25C1F29400677012 /* UserFactory.swift */; };
 		52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */; };
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
@@ -55,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		523CC3C725C31E4A001A118E /* RepositoriesNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesNetworkClient.swift; sourceTree = "<group>"; };
 		524BC99D25C1BAF500754DE2 /* IdeasWorldTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeasWorldTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524BC9A025C1BAF600754DE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524BC9A225C1BAF600754DE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 		524BCA0C25C1CB2F00754DE2 /* NetworkFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFactory.swift; sourceTree = "<group>"; };
 		524BCA1125C1CC4200754DE2 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		524BCA1625C1CFBC00754DE2 /* NetworkResultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResultHandler.swift; sourceTree = "<group>"; };
-		524BCA2525C1D20400754DE2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		524BCA2525C1D20400754DE2 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		52621EE625C1D3AB00AC7BAA /* EmptyParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyParameters.swift; sourceTree = "<group>"; };
 		52621EEE25C1D52E00AC7BAA /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		52621EF325C1D5E000AC7BAA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -86,6 +94,12 @@
 		52621F1625C1EDF700AC7BAA /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		52621F1B25C1EE2400AC7BAA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		52621F2425C1EEF300AC7BAA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesNetworkConstants.swift; sourceTree = "<group>"; };
+		52B315D425C321FD0021EA4D /* Api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Api.plist; sourceTree = "<group>"; };
+		52B315D925C3230B0021EA4D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		52B315DE25C324230021EA4D /* DecoderPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderPlist.swift; sourceTree = "<group>"; };
+		52B315E325C325E50021EA4D /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
+		52B315F425C32C8E0021EA4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		52D11EFC25C1F29400677012 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstant.swift; sourceTree = "<group>"; };
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
@@ -116,6 +130,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		523CC3C625C31E35001A118E /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				52621EEE25C1D52E00AC7BAA /* SearchParameters.swift */,
+				523CC3C725C31E4A001A118E /* RepositoriesNetworkClient.swift */,
+				52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */,
+			);
+			path = NetworkClient;
+			sourceTree = "<group>";
+		};
 		524BC99425C1BAF500754DE2 = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +163,13 @@
 		524BC99F25C1BAF600754DE2 /* IdeasWorldTest */ = {
 			isa = PBXGroup;
 			children = (
-				52D11F0F25C1F53400677012 /* Model */,
+				52B315E325C325E50021EA4D /* DiContainer.swift */,
+				52B315F425C32C8E0021EA4D /* Log.swift */,
+				52B315D325C321EA0021EA4D /* Api */,
 				524BC9EC25C1C76D00754DE2 /* Extension */,
 				52621EF825C1E32300AC7BAA /* CoreData */,
 				524BC9EB25C1C74C00754DE2 /* Network */,
-				524BCA2325C1D1CE00754DE2 /* Search */,
+				524BCA2325C1D1CE00754DE2 /* Repositories */,
 				524BC9A025C1BAF600754DE2 /* AppDelegate.swift */,
 				524BC9A225C1BAF600754DE2 /* SceneDelegate.swift */,
 				524BC9A925C1BAF800754DE2 /* Assets.xcassets */,
@@ -202,14 +228,15 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		524BCA2325C1D1CE00754DE2 /* Search */ = {
+		524BCA2325C1D1CE00754DE2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				523CC3C625C31E35001A118E /* NetworkClient */,
+				52D11F0F25C1F53400677012 /* Model */,
 				524BCA2425C1D1DC00754DE2 /* View */,
-				524BCA2525C1D20400754DE2 /* SearchViewModel.swift */,
-				52621EEE25C1D52E00AC7BAA /* SearchParameters.swift */,
+				524BCA2525C1D20400754DE2 /* RepositoriesViewModel.swift */,
 			);
-			path = Search;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		524BCA2425C1D1DC00754DE2 /* View */ = {
@@ -250,6 +277,16 @@
 				52D11EFC25C1F29400677012 /* UserFactory.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		52B315D325C321EA0021EA4D /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				52B315D425C321FD0021EA4D /* Api.plist */,
+				52B315D925C3230B0021EA4D /* Api.swift */,
+				52B315DE25C324230021EA4D /* DecoderPlist.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		52D11F0F25C1F53400677012 /* Model */ = {
@@ -365,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524BC9AD25C1BAF800754DE2 /* LaunchScreen.storyboard in Resources */,
+				52B315D525C321FD0021EA4D /* Api.plist in Resources */,
 				524BC9AA25C1BAF800754DE2 /* Assets.xcassets in Resources */,
 				524BC9A825C1BAF600754DE2 /* Main.storyboard in Resources */,
 			);
@@ -415,16 +453,21 @@
 				524BC9A525C1BAF600754DE2 /* ViewController.swift in Sources */,
 				52621F0425C1E37900AC7BAA /* DataBase.xcdatamodeld in Sources */,
 				52621EE725C1D3AB00AC7BAA /* EmptyParameters.swift in Sources */,
+				52B315CF25C321C80021EA4D /* RepositoriesNetworkConstants.swift in Sources */,
 				524BC9A125C1BAF600754DE2 /* AppDelegate.swift in Sources */,
+				52B315DA25C3230B0021EA4D /* Api.swift in Sources */,
 				524BCA0D25C1CB2F00754DE2 /* NetworkFactory.swift in Sources */,
+				52B315E425C325E50021EA4D /* DiContainer.swift in Sources */,
 				52621EEF25C1D52E00AC7BAA /* SearchParameters.swift in Sources */,
 				52621F1C25C1EE2400AC7BAA /* Repository.swift in Sources */,
 				52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */,
 				52621F2525C1EEF300AC7BAA /* User.swift in Sources */,
 				52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */,
+				523CC3C825C31E4A001A118E /* RepositoriesNetworkClient.swift in Sources */,
 				524BCA0125C1CA2000754DE2 /* NetworkingError.swift in Sources */,
 				524BCA1225C1CC4200754DE2 /* Parameters.swift in Sources */,
-				524BCA2625C1D20400754DE2 /* SearchViewModel.swift in Sources */,
+				52B315DF25C324230021EA4D /* DecoderPlist.swift in Sources */,
+				524BCA2625C1D20400754DE2 /* RepositoriesViewModel.swift in Sources */,
 				524BCA0625C1CAE300754DE2 /* GetRequest.swift in Sources */,
 				52621F0925C1EADD00AC7BAA /* CoreDataStore.swift in Sources */,
 				52621F0F25C1EC2D00AC7BAA /* RepositoryRequestFactory.swift in Sources */,
@@ -434,6 +477,7 @@
 				524BCA1725C1CFBC00754DE2 /* NetworkResultHandler.swift in Sources */,
 				524BC9A325C1BAF600754DE2 /* SceneDelegate.swift in Sources */,
 				52621F1725C1EDF700AC7BAA /* RepositoryFactory.swift in Sources */,
+				52B315F525C32C8E0021EA4D /* Log.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

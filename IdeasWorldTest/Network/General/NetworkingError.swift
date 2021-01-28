@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkingError {
+enum NetworkingError: LocalizedError {
     case error(Error)
     case emptyResponse
     case httpError(statusCode: HTTPStatusCode)

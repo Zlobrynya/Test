@@ -49,6 +49,7 @@ class GetRequest: RequestProtocol {
             else { throw ErrorRequest.non }
             urlComponents.queryItems = parameters.asDictionary.asURLQueryItem()
             guard let url = urlComponents.url else { throw ErrorRequest.non }
+            Log.debug(urlComponents.queryItems)
             request = URLRequest(url: url)
         } else {
             request = URLRequest(url: url)
@@ -59,14 +60,11 @@ class GetRequest: RequestProtocol {
     // MARK: - Public Properties
 
     func send() {
+        let resultHandler = self.resultHandler
         task = urlSession.dataTask(
             with: request,
-            onResult: { [weak self] in
-                self?.resultHandler?.requestFailedWithResult($0)
-            },
-            onError: { [weak self] in
-                self?.resultHandler?.requestFailedWithError($0)
-            }
+            onResult: { resultHandler?.requestFailedWithResult($0) },
+            onError: { resultHandler?.requestFailedWithError($0) }
         )
         task?.resume()
     }
