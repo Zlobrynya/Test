@@ -37,14 +37,14 @@ class RepositoriesNetworkClient: RepositoriesNetworkClientProtocol {
     weak var resultHandler: RepositoriesNetworkClientResultHandler?
 
     private let networkRequestFactory: NetworkRequestFactoryProtocol
-    private let constants: RepositoriesNetworkConstantsProtocol
+    private let constants: RepositoriesConstantsProtocol
     private let jsonDecoder: JSONDecoder
 
     // MARK: - Lifecycle
 
     init(
         networkRequestFactory: NetworkRequestFactoryProtocol = NetworkRequestFactory(),
-        constants: RepositoriesNetworkConstantsProtocol = RepositoriesNetworkConstants(),
+        constants: RepositoriesConstantsProtocol = RepositoriesConstants(),
         jsonDecoder: JSONDecoder = JSONDecoder()
     ) {
         self.networkRequestFactory = networkRequestFactory

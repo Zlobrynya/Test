@@ -33,7 +33,7 @@
 		52621F1725C1EDF700AC7BAA /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F1625C1EDF700AC7BAA /* RepositoryFactory.swift */; };
 		52621F1C25C1EE2400AC7BAA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F1B25C1EE2400AC7BAA /* Repository.swift */; };
 		52621F2525C1EEF300AC7BAA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52621F2425C1EEF300AC7BAA /* User.swift */; };
-		52B315CF25C321C80021EA4D /* RepositoriesNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */; };
+		52B315CF25C321C80021EA4D /* RepositoriesConstantsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315CE25C321C80021EA4D /* RepositoriesConstantsProtocol.swift */; };
 		52B315D525C321FD0021EA4D /* Api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B315D425C321FD0021EA4D /* Api.plist */; };
 		52B315DA25C3230B0021EA4D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315D925C3230B0021EA4D /* Api.swift */; };
 		52B315DF25C324230021EA4D /* DecoderPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B315DE25C324230021EA4D /* DecoderPlist.swift */; };
@@ -94,7 +94,7 @@
 		52621F1625C1EDF700AC7BAA /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		52621F1B25C1EE2400AC7BAA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		52621F2425C1EEF300AC7BAA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesNetworkConstants.swift; sourceTree = "<group>"; };
+		52B315CE25C321C80021EA4D /* RepositoriesConstantsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesConstantsProtocol.swift; sourceTree = "<group>"; };
 		52B315D425C321FD0021EA4D /* Api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Api.plist; sourceTree = "<group>"; };
 		52B315D925C3230B0021EA4D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		52B315DE25C324230021EA4D /* DecoderPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderPlist.swift; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 			children = (
 				52621EEE25C1D52E00AC7BAA /* SearchParameters.swift */,
 				523CC3C725C31E4A001A118E /* RepositoriesNetworkClient.swift */,
-				52B315CE25C321C80021EA4D /* RepositoriesNetworkConstants.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -235,6 +234,7 @@
 				52D11F0F25C1F53400677012 /* Model */,
 				524BCA2425C1D1DC00754DE2 /* View */,
 				524BCA2525C1D20400754DE2 /* RepositoriesViewModel.swift */,
+				52B315CE25C321C80021EA4D /* RepositoriesConstantsProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				524BC9A525C1BAF600754DE2 /* ViewController.swift in Sources */,
 				52621F0425C1E37900AC7BAA /* DataBase.xcdatamodeld in Sources */,
 				52621EE725C1D3AB00AC7BAA /* EmptyParameters.swift in Sources */,
-				52B315CF25C321C80021EA4D /* RepositoriesNetworkConstants.swift in Sources */,
+				52B315CF25C321C80021EA4D /* RepositoriesConstantsProtocol.swift in Sources */,
 				524BC9A125C1BAF600754DE2 /* AppDelegate.swift in Sources */,
 				52B315DA25C3230B0021EA4D /* Api.swift in Sources */,
 				524BCA0D25C1CB2F00754DE2 /* NetworkFactory.swift in Sources */,
