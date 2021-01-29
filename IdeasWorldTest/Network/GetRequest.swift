@@ -49,7 +49,6 @@ class GetRequest: RequestProtocol {
             else { throw ErrorRequest.non }
             urlComponents.queryItems = parameters.asDictionary.asURLQueryItem()
             guard let url = urlComponents.url else { throw ErrorRequest.non }
-            Log.debug(urlComponents.queryItems)
             request = URLRequest(url: url)
         } else {
             request = URLRequest(url: url)

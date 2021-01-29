@@ -18,20 +18,24 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     private var page: Int?
     private var searchName: String?
+    private var selectRepositories: RepositoryProtocol?
 
     // MARK: - External Dependencies
 
     private let networkClient: RepositoriesNetworkClientProtocol
     private let constants: RepositoriesConstantsProtocol
+    private let detailInfoFactory: DetailInfoFactoryProtocol
 
     // MARK: - Lifecycle
 
     init(
         networkClient: RepositoriesNetworkClientProtocol = RepositoriesNetworkClient(),
-        constants: RepositoriesConstantsProtocol = RepositoriesConstants()
+        constants: RepositoriesConstantsProtocol = RepositoriesConstants(),
+        detailInfoFactory: DetailInfoFactoryProtocol = DetailInfoFactory()
     ) {
         self.networkClient = networkClient
         self.constants = constants
+        self.detailInfoFactory = detailInfoFactory
 
         self.networkClient.resultHandler = self
     }
@@ -46,6 +50,11 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     func search(forName name: String) {
         networkClient.repositories(forName: name, andPage: page, andCountPerPage: constants.countInPage)
+    }
+    
+    func detailViewModel() -> DetailInfoViewModel? {
+        guard let selectRepositories = selectRepositories else { return nil }
+        return detailInfoFactory.viewModel(repository: selectRepositories)
     }
 
     // MARK: - RepositoriesNetworkClientResultHandler Conformance

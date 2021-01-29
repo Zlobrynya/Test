@@ -12,7 +12,7 @@ protocol RepositoryProtocol: Decodable {
     var name: String { get }
     var userId: Int { get }
     var description: String? { get }
-    var user: UserProtocol? { get }
+    var user: UserProtocol? { get set }
 }
 
 struct Repository: RepositoryProtocol {

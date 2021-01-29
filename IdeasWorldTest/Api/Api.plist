@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>url</key>
-	<string>https://api.github.com/search/</string>
+	<string>https://api.github.com/</string>
 	<key>repositories</key>
-	<string>repositories</string>
+	<string>search/repositories</string>
 	<key>user</key>
 	<string>users/{username}</string>
 </dict>
