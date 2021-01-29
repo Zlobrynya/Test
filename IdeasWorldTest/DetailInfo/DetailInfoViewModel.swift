@@ -1,5 +1,5 @@
 //
-//  UserViewModel.swift
+//  DetailInfoViewModel.swift
 //  IdeasWorldTest
 //
 //  Created by Nikitin Nikita on 28.01.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserViewModel: UserNetworkClientResultHandler {
+class DetailInfoViewModel: UserNetworkClientResultHandler {
 
     // MARK: - External Dependencies
 
@@ -18,13 +18,13 @@ class UserViewModel: UserNetworkClientResultHandler {
     // MARK: - Lifecycle
 
     init(
+        repository: RepositoryProtocol,
         networkClient: UserNetworkClientProtocol = UserNetworkClient(),
         repositoryCoreData: RepositoryCoreDataProtocol = RepositoryCoreData()
     ) {
         self.networkClient = networkClient
         self.repositoryCoreData = repositoryCoreData
-
-        repository = Repository(id: 1, name: "Test", userId: 0)
+        self.repository = repository
 
         self.networkClient.resultHandler = self
     }

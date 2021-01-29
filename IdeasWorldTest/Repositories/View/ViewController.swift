@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let viewModel = UserViewModel()
+    let viewModel = DetailInfoViewModel(repository: Repository(id: 2, name: "name", userId: 1))
 
     // MARK: - Lifecycle
 

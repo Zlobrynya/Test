@@ -23,15 +23,18 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     private let networkClient: RepositoriesNetworkClientProtocol
     private let constants: RepositoriesConstantsProtocol
+    private let detailInfoFactory: DetailInfoFactoryProtocol
 
     // MARK: - Lifecycle
 
     init(
         networkClient: RepositoriesNetworkClientProtocol = RepositoriesNetworkClient(),
-        constants: RepositoriesConstantsProtocol = RepositoriesConstants()
+        constants: RepositoriesConstantsProtocol = RepositoriesConstants(),
+        detailInfoFactory: DetailInfoFactoryProtocol = DetailInfoFactory()
     ) {
         self.networkClient = networkClient
         self.constants = constants
+        self.detailInfoFactory = detailInfoFactory
 
         self.networkClient.resultHandler = self
     }
@@ -46,6 +49,10 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     func search(forName name: String) {
         networkClient.repositories(forName: name, andPage: page, andCountPerPage: constants.countInPage)
+    }
+    
+    func detailViewModel() {
+        
     }
 
     // MARK: - RepositoriesNetworkClientResultHandler Conformance
