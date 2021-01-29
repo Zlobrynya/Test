@@ -15,6 +15,8 @@ protocol RepositoryCoreDataProtocol {
     func repository(byId id: Int) -> RepositoryProtocol?
 
     func remove(byId id: Int)
+    
+    func hasRepository(byId id: Int) -> Bool
 }
 
 struct RepositoryCoreData: RepositoryCoreDataProtocol {
@@ -86,10 +88,18 @@ struct RepositoryCoreData: RepositoryCoreDataProtocol {
     func remove(byId id: Int) {
         let request = requestFactory.repository(byId: id)
         coreDataStore.performOnBackgroundQueue { context in
-            let repositoriesEntity = try? context.fetch(request)
-            repositoriesEntity?.forEach {
-                context.delete($0)
+            do {
+                let repositoriesEntity = try context.fetch(request)
+                repositoriesEntity.forEach {
+                    context.delete($0)
+                }
+            } catch {
+                Log.error(error)
             }
         }
+    }
+    
+    func hasRepository(byId id: Int) -> Bool {
+        repository(byId: id) == nil
     }
 }

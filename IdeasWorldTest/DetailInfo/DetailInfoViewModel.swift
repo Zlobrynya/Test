@@ -35,7 +35,7 @@ class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
     }
 
     func onAppear() {
-        isFavorite = repositoryCoreData.repository(byId: repository.id) != nil
+        isFavorite = repositoryCoreData.hasRepository(byId: repository.id)
         networkClient.user(forUsername: repository.username)
     }
 
