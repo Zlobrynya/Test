@@ -50,6 +50,7 @@
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
 		52FBC03C25C43F2800C94612 /* UserRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBC03B25C43F2800C94612 /* UserRequestFactory.swift */; };
 		52FBC04725C4494A00C94612 /* DetailInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBC04625C4494A00C94612 /* DetailInfoFactory.swift */; };
+		52FBC08025C478E200C94612 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBC07F25C478E200C94612 /* Throttler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
 		52FBC03B25C43F2800C94612 /* UserRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestFactory.swift; sourceTree = "<group>"; };
 		52FBC04625C4494A00C94612 /* DetailInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoFactory.swift; sourceTree = "<group>"; };
+		52FBC07F25C478E200C94612 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				524BC9EC25C1C76D00754DE2 /* Extension */,
 				52621EF825C1E32300AC7BAA /* CoreData */,
 				524BC9EB25C1C74C00754DE2 /* Network */,
+				52FBC07E25C478D600C94612 /* Service */,
 				524BCA2325C1D1CE00754DE2 /* Repositories */,
 				52B3160825C3394F0021EA4D /* DetailInfo */,
 				524BC9A025C1BAF600754DE2 /* AppDelegate.swift */,
@@ -359,6 +362,14 @@
 				52D11F1025C1F56100677012 /* RepositoriesResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		52FBC07E25C478D600C94612 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				52FBC07F25C478E200C94612 /* Throttler.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +548,7 @@
 				524BCA1225C1CC4200754DE2 /* Parameters.swift in Sources */,
 				52B315DF25C324230021EA4D /* DecoderPlist.swift in Sources */,
 				52B3162425C33BC40021EA4D /* UserNetworkClient.swift in Sources */,
+				52FBC08025C478E200C94612 /* Throttler.swift in Sources */,
 				524BCA2625C1D20400754DE2 /* RepositoriesViewModel.swift in Sources */,
 				5241D91F25C42834005A683E /* RepositoryCoreData.swift in Sources */,
 				524BCA0625C1CAE300754DE2 /* GetRequest.swift in Sources */,
