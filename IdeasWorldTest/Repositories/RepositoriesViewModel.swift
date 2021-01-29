@@ -14,9 +14,12 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     @Published var repositories = [RepositoryProtocol]()
     @Published var isPresentErrorAlert = false
+    @Published var isLoading = false
     var errorMessage = "" { didSet { isPresentErrorAlert = true } }
 
     var favouriteRepositories = true
+    var isLoadMore: Bool { (page ?? 0) > 1  }
+
     var search = "" {
         didSet {
             page = 0
@@ -78,7 +81,8 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     func repositoriesRequestDidSucceed(_ repositories: [RepositoryProtocol]) {
         favouriteRepositories = false
         DispatchQueue.main.async {
-            if self.page ?? 0 > 1 {
+            self.isLoading = false
+            if self.isLoadMore {
                 self.repositories.append(contentsOf: repositories)
             } else {
                 self.repositories = repositories
@@ -89,6 +93,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     func repositoriesRequestDidFailed(_ error: Error) {
         Log.error("repositoriesRequestDidFailed \(error)")
         DispatchQueue.main.async {
+            self.isLoading = false
             self.errorMessage = "Something's wrong"
         }
     }
@@ -102,6 +107,8 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
             if self.search.isEmpty {
                 self.setFavouriteRepositories()
             } else {
+                self.favouriteRepositories = false
+                self.isLoading = true
                 self.networkClient.repositories(
                     forName: self.search,
                     andPage: self.page,

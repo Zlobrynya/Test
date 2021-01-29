@@ -12,7 +12,7 @@ protocol RepositoriesNetworkClientResultHandler: AnyObject {
     ///
     /// - Parameter <#Name Parameter#>: <#Parameter Description#>
     func repositoriesRequestDidSucceed(_ repositories: [RepositoryProtocol])
-    
+
     ///  <#Description#>
     ///
     /// - Parameter <#Name Parameter#>: <#Parameter Description#>
@@ -25,7 +25,7 @@ protocol RepositoriesNetworkClientProtocol: NetworkResultHandler {
     /// - Parameter name: <#Parameter Description#>
     /// - Parameter page: <#Parameter Description#>
     func repositories(forName name: String, andPage page: Int?, andCountPerPage perPage: Int)
-    
+
     func cancelRequest()
 
     ///  <#Description#>
@@ -33,10 +33,9 @@ protocol RepositoriesNetworkClientProtocol: NetworkResultHandler {
 }
 
 class RepositoriesNetworkClient: RepositoriesNetworkClientProtocol {
-    
-    
+
     // MARK: - Private Functions
-    
+
     private var request: RequestProtocol?
 
     // MARK: - External Dependencies
@@ -73,10 +72,8 @@ class RepositoriesNetworkClient: RepositoriesNetworkClientProtocol {
             resultHandler?.repositoriesRequestDidFailed(error)
         }
     }
-    
-    func cancelRequest() {
-        
-    }
+
+    func cancelRequest() {}
 
     // MARK: - NetworkResultHandler Conformance
 

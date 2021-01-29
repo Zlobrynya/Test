@@ -32,21 +32,13 @@ struct RepositoriesView: View {
     private var main: some View {
         Form {
             Section(header: header) {
-                repositories
+                if viewModel.isLoading, !viewModel.isLoadMore {
+                    activityIndicator
+                } else {
+                    repositories
+                    activityIndicator
+                }
             }
-        }
-    }
-    
-    private var repositories: AnyView {
-        if viewModel.repositories.isEmpty {
-            return Text("Don't have repositories.").asAnyView()
-        } else {
-            return ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, item in
-                NavigationLink(
-                    item.name,
-                    destination: DetailInfoView(viewModel: viewModel.detailViewModel(withRepository: item))
-                ).onAppear { viewModel.loadMore(number: index) }
-            }.asAnyView()
         }
     }
 
@@ -59,6 +51,24 @@ struct RepositoriesView: View {
     }
 
     // MARK: - Optional Views
+
+    private var repositories: AnyView? {
+        if viewModel.repositories.isEmpty {
+            return Text("Don't have repositories.").asAnyView()
+        } else {
+            return ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, item in
+                NavigationLink(
+                    item.name,
+                    destination: DetailInfoView(viewModel: viewModel.detailViewModel(withRepository: item))
+                ).onAppear { viewModel.loadMore(number: index) }
+            }.asAnyView()
+        }
+    }
+
+    private var activityIndicator: AnyView? {
+        guard viewModel.isLoading else { return nil }
+        return ActivityIndicator(isAnimating: $viewModel.isLoading, style: .medium).asAnyView()
+    }
 }
 
 struct RepositoriesView_Previews: PreviewProvider {

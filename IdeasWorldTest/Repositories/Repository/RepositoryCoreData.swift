@@ -100,6 +100,6 @@ struct RepositoryCoreData: RepositoryCoreDataProtocol {
     }
     
     func hasRepository(byId id: Int) -> Bool {
-        repository(byId: id) == nil
+        repository(byId: id) != nil
     }
 }
