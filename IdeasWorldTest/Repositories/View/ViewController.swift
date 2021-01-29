@@ -22,4 +22,6 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.user(forUserName: "Zlobrynya")
     }
+
+    @IBAction func test(_ sender: Any) {}
 }
