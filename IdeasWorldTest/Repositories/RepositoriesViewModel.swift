@@ -18,6 +18,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     private var page: Int?
     private var searchName: String?
+    private var selectRepositories: RepositoryProtocol?
 
     // MARK: - External Dependencies
 
@@ -51,8 +52,9 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
         networkClient.repositories(forName: name, andPage: page, andCountPerPage: constants.countInPage)
     }
     
-    func detailViewModel() {
-        
+    func detailViewModel() -> DetailInfoViewModel? {
+        guard let selectRepositories = selectRepositories else { return nil }
+        return detailInfoFactory.viewModel(repository: selectRepositories)
     }
 
     // MARK: - RepositoriesNetworkClientResultHandler Conformance
