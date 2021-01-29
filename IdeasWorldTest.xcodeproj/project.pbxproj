@@ -43,6 +43,7 @@
 		52B3161F25C33B500021EA4D /* UserPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3161E25C33B500021EA4D /* UserPlaceholder.swift */; };
 		52B3162425C33BC40021EA4D /* UserNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162325C33BC40021EA4D /* UserNetworkClient.swift */; };
 		52B3162A25C340C40021EA4D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162925C340C40021EA4D /* UserRepository.swift */; };
+		52B36ABB25C486C1000D6E77 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B36ABA25C486C1000D6E77 /* DetailInfoView.swift */; };
 		52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11EFC25C1F29400677012 /* UserFactory.swift */; };
 		52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */; };
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
@@ -116,6 +117,7 @@
 		52B3161E25C33B500021EA4D /* UserPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPlaceholder.swift; sourceTree = "<group>"; };
 		52B3162325C33BC40021EA4D /* UserNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkClient.swift; sourceTree = "<group>"; };
 		52B3162925C340C40021EA4D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		52B36ABA25C486C1000D6E77 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		52D11EFC25C1F29400677012 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstant.swift; sourceTree = "<group>"; };
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		52B3160A25C339660021EA4D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52B36ABA25C486C1000D6E77 /* DetailInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				524BC9F725C1C93400754DE2 /* URLSession.swift in Sources */,
 				52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */,
 				52621EF425C1D5E100AC7BAA /* Dictionary.swift in Sources */,
+				52B36ABB25C486C1000D6E77 /* DetailInfoView.swift in Sources */,
 				524BCA1725C1CFBC00754DE2 /* NetworkResultHandler.swift in Sources */,
 				524BC9A325C1BAF600754DE2 /* SceneDelegate.swift in Sources */,
 				52621F1725C1EDF700AC7BAA /* RepositoryFactory.swift in Sources */,

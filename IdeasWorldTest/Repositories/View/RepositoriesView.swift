@@ -33,8 +33,10 @@ struct RepositoriesView: View {
         Form {
             Section(header: header) {
                 ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, item in
-                    NavigationLink(item.name, destination: Text("Test"))
-                        .onAppear { viewModel.loadMore(number: index) }
+                    NavigationLink(
+                        item.name,
+                        destination: DetailInfoView(viewModel: viewModel.detailViewModel(withRepository: item))
+                    ).onAppear { viewModel.loadMore(number: index) }
                 }
             }
         }
