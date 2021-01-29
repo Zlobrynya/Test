@@ -13,12 +13,22 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     // MARK: - Public Properties
 
     @Published var repositories = [RepositoryProtocol]()
-    var search = "" { didSet { searchRepos() } }
+    @Published var isPresentErrorAlert = false
+    var errorMessage = "" { didSet { isPresentErrorAlert = true } }
+
+    var favouriteRepositories = true
+    var search = "" {
+        didSet {
+            page = 0
+            searchRepositories()
+        }
+    }
 
     // MARK: - Private Properties
 
     private var page: Int?
     private var searchName: String?
+    private var isLoadMore = false
     private var selectRepositories: RepositoryProtocol?
 
     // MARK: - External Dependencies
@@ -27,6 +37,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     private let constants: RepositoriesConstantsProtocol
     private let repositoryCoreData: RepositoryCoreDataProtocol
     private let detailInfoFactory: DetailInfoFactoryProtocol
+    private let throttler: ThrottlerProtocol
 
     // MARK: - Lifecycle
 
@@ -34,26 +45,29 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
         networkClient: RepositoriesNetworkClientProtocol = RepositoriesNetworkClient(),
         constants: RepositoriesConstantsProtocol = RepositoriesConstants(),
         repositoryCoreData: RepositoryCoreDataProtocol = RepositoryCoreData(),
-        detailInfoFactory: DetailInfoFactoryProtocol = DetailInfoFactory()
+        detailInfoFactory: DetailInfoFactoryProtocol = DetailInfoFactory(),
+        throttler: ThrottlerProtocol = Throttler(minimumDelay: 0.3)
     ) {
         self.networkClient = networkClient
         self.repositoryCoreData = repositoryCoreData
         self.constants = constants
+        self.throttler = throttler
         self.detailInfoFactory = detailInfoFactory
 
         self.networkClient.resultHandler = self
     }
 
     func onAppear() {
-        repositories = repositoryCoreData.repository()
+        guard repositories.isEmpty else { return }
+        setFavouriteRepositories()
     }
 
     // MARK: - Public Functions
 
     func loadMore(number: Int) {
-        guard number > repositories.count - 10, let search = searchName else { return }
+        guard number > repositories.count - 10, !search.isEmpty else { return }
         page = (repositories.count / constants.countInPage) + 1
-//        self.search(forName: search)
+        searchRepositories()
     }
 
     func detailViewModel() -> DetailInfoViewModel? {
@@ -64,20 +78,43 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     // MARK: - RepositoriesNetworkClientResultHandler Conformance
 
     func repositoriesRequestDidSucceed(_ repositories: [RepositoryProtocol]) {
-        Log.debug("repositories: \(repositories.count)")
+        favouriteRepositories = false
         DispatchQueue.main.async {
-            self.repositories = repositories
+            if self.page ?? 0 > 1 {
+                self.repositories.append(contentsOf: repositories)
+            } else {
+                self.repositories = repositories
+            }
         }
     }
 
     func repositoriesRequestDidFailed(_ error: Error) {
         Log.error("repositoriesRequestDidFailed \(error)")
+        errorMessage = "Something's wrong"
     }
 
     // MARK: - Private Functions
 
-    private func searchRepos() {
-        guard !search.isEmpty else { return }
-        networkClient.repositories(forName: search, andPage: page, andCountPerPage: constants.countInPage)
+    private func searchRepositories() {
+        throttler.throttle { [weak self] in
+            guard let self = self else { return }
+            self.networkClient.cancelRequest()
+            if self.search.isEmpty {
+                self.setFavouriteRepositories()
+            } else {
+                self.networkClient.repositories(
+                    forName: self.search,
+                    andPage: self.page,
+                    andCountPerPage: self.constants.countInPage
+                )
+            }
+        }
+    }
+
+    private func setFavouriteRepositories() {
+        DispatchQueue.main.async {
+            self.favouriteRepositories = true
+            self.repositories = self.repositoryCoreData.repository()
+        }
     }
 }

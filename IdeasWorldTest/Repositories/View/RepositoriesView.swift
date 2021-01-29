@@ -20,6 +20,9 @@ struct RepositoriesView: View {
             main
                 .navigationBarSearch($viewModel.search, placeholder: "Search repository")
                 .navigationBarTitle("Search", displayMode: .inline)
+                .alert(isPresented: $viewModel.isPresentErrorAlert) {
+                    Alert(title: Text(viewModel.errorMessage))
+                }
                 .onAppear { viewModel.onAppear() }
         }
     }
@@ -28,12 +31,24 @@ struct RepositoriesView: View {
 
     private var main: some View {
         Form {
-            ForEach(viewModel.repositories, id: \.id) {
-                NavigationLink($0.name, destination: Text("Test"))
+            Section(header: header) {
+                ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, item in
+                    NavigationLink(item.name, destination: Text("Test"))
+                        .onAppear { viewModel.loadMore(number: index) }
+                }
             }
         }
     }
-    
+
+    private var header: some View {
+        Text(
+            viewModel.favouriteRepositories
+                ? "Favourite repositories"
+                : "Search repositories"
+        )
+    }
+
+    // MARK: - Optional Views
 }
 
 struct RepositoriesView_Previews: PreviewProvider {
