@@ -37,7 +37,6 @@ class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
     func onAppear() {
         isFavorite = repositoryCoreData.repository(byId: repository.id) != nil
         networkClient.user(forUsername: repository.username)
-
     }
 
     // MARK: - Public Functions
@@ -51,7 +50,7 @@ class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
         if isFavorite {
             repositoryCoreData.store(repository)
         } else {
-            
+            repositoryCoreData.remove(byId: repository.id)
         }
     }
 
@@ -59,7 +58,9 @@ class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
 
     func userRequestDidSucceed(_ user: UserProtocol) {
         Log.debug(user)
-        repository.user = user
+        DispatchQueue.main.async {
+            self.repository.user = user
+        }
     }
 
     func userRequestDidFailed(_ error: Error) {

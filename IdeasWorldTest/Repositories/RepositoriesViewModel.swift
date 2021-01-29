@@ -57,7 +57,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     }
 
     func onAppear() {
-        guard repositories.isEmpty else { return }
+        guard search.isEmpty else { return }
         setFavouriteRepositories()
     }
 
@@ -88,7 +88,9 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
 
     func repositoriesRequestDidFailed(_ error: Error) {
         Log.error("repositoriesRequestDidFailed \(error)")
-        errorMessage = "Something's wrong"
+        DispatchQueue.main.async {
+            self.errorMessage = "Something's wrong"
+        }
     }
 
     // MARK: - Private Functions

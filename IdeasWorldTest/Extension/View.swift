@@ -13,4 +13,8 @@ extension View {
     func navigationBarSearch(_ searchText: Binding<String>, placeholder: String? = nil) -> some View {
         overlay(SearchBarView(text: searchText, placeholder: placeholder).frame(width: 0, height: 0))
     }
+    
+    func asAnyView() -> AnyView {
+        AnyView(self)
+    }
 }
