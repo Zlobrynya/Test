@@ -18,7 +18,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     var errorMessage = "" { didSet { isPresentErrorAlert = true } }
 
     var favouriteRepositories = true
-    var isLoadMore: Bool { (page ?? 0) > 1  }
+    var isLoadMore: Bool { (page ?? 0) > 1 }
 
     var search = "" {
         didSet {
@@ -48,7 +48,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
         constants: RepositoriesConstantsProtocol = RepositoriesConstants(),
         repositoryCoreData: RepositoryCoreDataProtocol = RepositoryCoreData(),
         detailInfoFactory: DetailInfoFactoryProtocol = DetailInfoFactory(),
-        throttler: ThrottlerProtocol = Throttler(minimumDelay: 0.3)
+        throttler: ThrottlerProtocol = Throttler(minimumDelay: 0.4)
     ) {
         self.networkClient = networkClient
         self.repositoryCoreData = repositoryCoreData
