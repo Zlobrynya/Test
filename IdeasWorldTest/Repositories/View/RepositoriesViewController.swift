@@ -27,7 +27,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         navigationItem.title = "Table"
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
