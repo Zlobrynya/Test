@@ -13,6 +13,8 @@ protocol RepositoryRequestFactoryProtocol {
     ///
     /// - Returns: The instantiated `NSFetchRequest<RepositoryEntity>`
     func repositories() -> NSFetchRequest<RepositoryEntity>
+    
+    func repository(byId id: Int) -> NSFetchRequest<RepositoryEntity>
 }
 
 struct RepositoryRequestFactory: RepositoryRequestFactoryProtocol {
@@ -21,5 +23,11 @@ struct RepositoryRequestFactory: RepositoryRequestFactoryProtocol {
 
     func repositories() -> NSFetchRequest<RepositoryEntity> {
         RepositoryEntity.fetchRequest()
+    }
+    
+    func repository(byId id: Int) -> NSFetchRequest<RepositoryEntity> {
+        let request: NSFetchRequest<RepositoryEntity> = RepositoryEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %ld", id)
+        return request
     }
 }

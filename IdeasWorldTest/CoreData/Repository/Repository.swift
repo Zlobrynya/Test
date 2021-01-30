@@ -10,7 +10,7 @@ import Foundation
 protocol RepositoryProtocol: Decodable {
     var id: Int { get }
     var name: String { get }
-    var userId: Int { get }
+    var username: String { get }
     var description: String? { get }
     var user: UserProtocol? { get set }
 }
@@ -22,13 +22,14 @@ struct Repository: RepositoryProtocol {
         case name
         case description
         case owner
+        case login
     }
 
     // MARK: - Public Properties
 
     let id: Int
     let name: String
-    let userId: Int
+    let username: String
     let description: String?
     var user: UserProtocol?
 
@@ -37,13 +38,13 @@ struct Repository: RepositoryProtocol {
     init(
         id: Int,
         name: String,
-        userId: Int,
+        username: String,
         description: String? = nil,
         user: UserProtocol? = nil
     ) {
         self.id = id
         self.name = name
-        self.userId = userId
+        self.username = username
         self.description = description
         self.user = user
     }
@@ -54,7 +55,7 @@ struct Repository: RepositoryProtocol {
         name = try container.decode(String.self, forKey: .name)
         description = try? container.decode(String.self, forKey: .description)
         let owner = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .owner)
-        userId = try owner.decode(Int.self, forKey: .id)
+        username = try owner.decode(String.self, forKey: .login)
         user = nil
     }
 }

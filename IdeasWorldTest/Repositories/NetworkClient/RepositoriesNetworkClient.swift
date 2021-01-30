@@ -12,7 +12,7 @@ protocol RepositoriesNetworkClientResultHandler: AnyObject {
     ///
     /// - Parameter <#Name Parameter#>: <#Parameter Description#>
     func repositoriesRequestDidSucceed(_ repositories: [RepositoryProtocol])
-    
+
     ///  <#Description#>
     ///
     /// - Parameter <#Name Parameter#>: <#Parameter Description#>
@@ -26,11 +26,17 @@ protocol RepositoriesNetworkClientProtocol: NetworkResultHandler {
     /// - Parameter page: <#Parameter Description#>
     func repositories(forName name: String, andPage page: Int?, andCountPerPage perPage: Int)
 
+    func cancelRequest()
+
     ///  <#Description#>
     var resultHandler: RepositoriesNetworkClientResultHandler? { get set }
 }
 
 class RepositoriesNetworkClient: RepositoriesNetworkClientProtocol {
+
+    // MARK: - Private Functions
+
+    private var request: RequestProtocol?
 
     // MARK: - External Dependencies
 
@@ -59,13 +65,15 @@ class RepositoriesNetworkClient: RepositoriesNetworkClientProtocol {
         let parameters = SearchParameters(q: name, page: page, per_page: perPage)
         Log.debug(parameters)
         do {
-            let get = try networkRequestFactory.get(url: url, parameters: parameters, resultHandler: self)
-            get.send()
+            request = try networkRequestFactory.get(url: url, parameters: parameters, resultHandler: self)
+            request?.send()
         } catch {
             Log.error("repositories \(error)")
             resultHandler?.repositoriesRequestDidFailed(error)
         }
     }
+
+    func cancelRequest() {}
 
     // MARK: - NetworkResultHandler Conformance
 

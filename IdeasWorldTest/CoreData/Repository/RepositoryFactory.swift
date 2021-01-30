@@ -36,13 +36,13 @@ struct RepositoryFactory: RepositoryFactoryProtocol {
             let entity = entity,
             let id = entity.id as? Int,
             let name = entity.name,
-            let userId = entity.userId as? Int
+            let username = entity.username
         else { return nil }
 
         return Repository(
             id: id,
             name: name,
-            userId: userId,
+            username: username,
             description: entity.definition,
             user: userFactory.user(entity: entity.user)
         )

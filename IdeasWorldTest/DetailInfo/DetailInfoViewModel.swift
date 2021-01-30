@@ -5,15 +5,20 @@
 //  Created by Nikitin Nikita on 28.01.2021.
 //
 
+import Combine
 import Foundation
 
-class DetailInfoViewModel: UserNetworkClientResultHandler {
+class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
+
+    // MARK: - Public Properties
+
+    @Published var isFavorite = false
 
     // MARK: - External Dependencies
 
     private let networkClient: UserNetworkClientProtocol
     private let repositoryCoreData: RepositoryCoreDataProtocol
-    private var repository: RepositoryProtocol
+    @Published var repository: RepositoryProtocol
 
     // MARK: - Lifecycle
 
@@ -29,6 +34,11 @@ class DetailInfoViewModel: UserNetworkClientResultHandler {
         self.networkClient.resultHandler = self
     }
 
+    func onAppear() {
+        isFavorite = repositoryCoreData.hasRepository(byId: repository.id)
+        networkClient.user(forUsername: repository.username)
+    }
+
     // MARK: - Public Functions
 
     func user(forUserName username: String) {
@@ -36,18 +46,21 @@ class DetailInfoViewModel: UserNetworkClientResultHandler {
     }
 
     func favourite() {
-        repositoryCoreData.store(repository)
-    }
-
-    func test() {
-        Log.debug(repositoryCoreData.repository())
+        isFavorite.toggle()
+        if isFavorite {
+            repositoryCoreData.store(repository)
+        } else {
+            repositoryCoreData.remove(byId: repository.id)
+        }
     }
 
     // MARK: - UserNetworkClientResultHandler Conformance
 
     func userRequestDidSucceed(_ user: UserProtocol) {
         Log.debug(user)
-        repository.user = user
+        DispatchQueue.main.async {
+            self.repository.user = user
+        }
     }
 
     func userRequestDidFailed(_ error: Error) {
