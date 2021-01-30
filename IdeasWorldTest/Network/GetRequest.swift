@@ -18,6 +18,8 @@ enum ErrorRequest: LocalizedError {
 protocol RequestProtocol {
     ///  Sending a request.
     func send()
+    
+    func cancel()
 }
 
 class GetRequest: RequestProtocol {
@@ -66,5 +68,9 @@ class GetRequest: RequestProtocol {
             onError: { resultHandler?.requestFailedWithError($0) }
         )
         task?.resume()
+    }
+    
+    func cancel() {
+        task?.cancel()
     }
 }

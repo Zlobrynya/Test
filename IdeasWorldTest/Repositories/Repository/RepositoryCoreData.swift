@@ -11,6 +11,12 @@ protocol RepositoryCoreDataProtocol {
     func store(_ repository: RepositoryProtocol)
 
     func repository() -> [RepositoryProtocol]
+
+    func repository(byId id: Int) -> RepositoryProtocol?
+
+    func remove(byId id: Int)
+    
+    func hasRepository(byId id: Int) -> Bool
 }
 
 struct RepositoryCoreData: RepositoryCoreDataProtocol {
@@ -45,7 +51,7 @@ struct RepositoryCoreData: RepositoryCoreDataProtocol {
             let repositoryEntity = repositoryFactory.entity(in: context)
             repositoryEntity.id = repository.id as NSNumber
             repositoryEntity.name = repository.name
-            repositoryEntity.userId = repository.userId as NSNumber
+            repositoryEntity.username = repository.username
             repositoryEntity.definition = repository.description
             repositoryEntity.user = userRepository.entity(byId: user.id, in: context)
         }
@@ -63,5 +69,37 @@ struct RepositoryCoreData: RepositoryCoreDataProtocol {
             Log.error(error)
         }
         return repositories
+    }
+
+    func repository(byId id: Int) -> RepositoryProtocol? {
+        let request = requestFactory.repository(byId: id)
+        var repositories = [RepositoryProtocol]()
+        do {
+            try coreDataStore.performOnMainQueue { context in
+                let repositoriesEntity = try context.fetch(request)
+                repositories = repositoriesEntity.compactMap { repositoryFactory.repository(entity: $0) }
+            }
+        } catch {
+            Log.error(error)
+        }
+        return repositories.first
+    }
+
+    func remove(byId id: Int) {
+        let request = requestFactory.repository(byId: id)
+        coreDataStore.performOnBackgroundQueue { context in
+            do {
+                let repositoriesEntity = try context.fetch(request)
+                repositoriesEntity.forEach {
+                    context.delete($0)
+                }
+            } catch {
+                Log.error(error)
+            }
+        }
+    }
+    
+    func hasRepository(byId id: Int) -> Bool {
+        repository(byId: id) != nil
     }
 }
