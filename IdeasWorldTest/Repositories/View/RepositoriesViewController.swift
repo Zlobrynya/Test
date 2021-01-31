@@ -12,9 +12,6 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
 
     // MARK: - Private Properties
 
-    private var tableView: UITableView!
-    private let searchController = UISearchController()
-    private var activityIndicator: UIActivityIndicatorView!
     private var subscriptions = Set<AnyCancellable>()
     
     private let identifierTableCell = "TableViewCell"
@@ -28,11 +25,11 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Table"
+        navigationItem.title = "Github search engine"
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
-        activityIndicator = UIActivityIndicatorView()
-        createTableView()
+        view.addSubview(tableView)
+        updateConstraint()
         createSearchBar()
     }
 
@@ -41,8 +38,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
         viewModel.onAppear()
         viewModel.$repositories
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] item in
-                Log.debug(item)
+            .sink { [weak self] _ in
                 self?.tableView.reloadData()
             }
             .store(in: &subscriptions)
@@ -55,6 +51,23 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
             }
             .store(in: &subscriptions)
     }
+    
+    // MARK: - Optional Views
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifierTableCell)
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundView = activityIndicator
+        return tableView
+    }()
+
+    private let searchController = UISearchController()
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        UIActivityIndicatorView()
+    }()
 
     // MARK: - UITableViewDataSource Conformance
 
@@ -85,15 +98,6 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.sizeToFit()
-    }
-
-    private func createTableView() {
-        tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifierTableCell)
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        updateConstraint()
     }
 
     private func updateConstraint() {
