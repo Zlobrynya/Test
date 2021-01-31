@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let viewController = RepositoriesViewController()
         viewController.viewModel = RepositoriesViewModel()
-        let navigationController = UINavigationController(rootViewController: DetailInfoViewController())
+        let navigationController = UINavigationController(rootViewController: viewController)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

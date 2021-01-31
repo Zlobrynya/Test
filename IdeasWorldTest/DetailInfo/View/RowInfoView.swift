@@ -11,7 +11,12 @@ class RowInfoView: UIView {
 
     // MARK: - External Dependencies
 
-    var message: String = "" { didSet { textLabel.text = message } }
+    var message: String = "" {
+        didSet {
+            textLabel.text = message
+            self.updateConstraints()
+        }
+    }
 
     // MARK: - Lifecycle
 
@@ -20,7 +25,6 @@ class RowInfoView: UIView {
         stackView.addArrangedSubview(headerLabel)
         stackView.addArrangedSubview(textLabel)
         headerLabel.text = header
-        textLabel.text = " "
         addSubview(stackView)
         setupLayout()
     }

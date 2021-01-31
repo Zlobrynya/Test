@@ -72,8 +72,10 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
         searchRepositories()
     }
 
-    func detailViewModel(withRepository repository: RepositoryProtocol) -> DetailInfoViewModel {
-        detailInfoFactory.viewModel(repository: repository)
+    func detailViewModel(forIndex index: Int) -> DetailInfoViewModel? {
+        guard index < repositories.count else { return nil }
+        let repository = repositories[index]
+        return detailInfoFactory.viewModel(repository: repository)
     }
 
     // MARK: - RepositoriesNetworkClientResultHandler Conformance

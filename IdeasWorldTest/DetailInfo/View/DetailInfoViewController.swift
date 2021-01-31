@@ -24,11 +24,12 @@ class DetailInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(stackView)
+        navigationItem.title = "Repository Information"
         updateConstraint(view: stackView)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.onAppear()
         sinkRepository()
         sinkIsFavorite()
@@ -75,7 +76,6 @@ class DetailInfoViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] item in
                 guard let self = self else { return }
-                Log.debug(item)
                 self.nameRow.message = item.name
                 self.stackView.addArrangedSubview(self.nameRow)
                 self.setDescription(item.description)

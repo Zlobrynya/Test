@@ -8,12 +8,12 @@
 import Combine
 import UIKit
 
-class RepositoriesViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
+class RepositoriesViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating, UITableViewDelegate {
 
     // MARK: - Private Properties
 
     private var subscriptions = Set<AnyCancellable>()
-    
+
     private let identifierTableCell = "TableViewCell"
 
     // MARK: - External Dependencies
@@ -36,38 +36,25 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.onAppear()
-        viewModel.$repositories
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
-            }
-            .store(in: &subscriptions)
-        viewModel.$isLoading
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isLoading in
-                isLoading ?
-                    self?.activityIndicator.startAnimating() :
-                    self?.activityIndicator.stopAnimating()
-            }
-            .store(in: &subscriptions)
+        linkRepositories()
+        linkIsLoading()
+        linkIsPresentErrorAlert()
     }
-    
-    // MARK: - Optional Views
+
+    // MARK: - Views
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifierTableCell)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundView = activityIndicator
         return tableView
     }()
 
-    private let searchController = UISearchController()
-
-    private lazy var activityIndicator: UIActivityIndicatorView = {
-        UIActivityIndicatorView()
-    }()
+    private lazy var searchController = UISearchController()
+    private lazy var activityIndicator = UIActivityIndicatorView()
 
     // MARK: - UITableViewDataSource Conformance
 
@@ -83,6 +70,15 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
         return cell
     }
 
+    // MARK: - UITableViewDelegate Conformance
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel.detailViewModel(forIndex: indexPath.row) else { return }
+        let viewController = DetailInfoViewController()
+        viewController.viewModel = viewModel
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     // MARK: - UISearchResultsUpdating Conformance
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -91,6 +87,42 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
     }
 
     // MARK: - Private Functions
+
+    private func linkRepositories() {
+        viewModel.$repositories
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
+    }
+
+    private func linkIsLoading() {
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                isLoading ?
+                    self?.activityIndicator.startAnimating() :
+                    self?.activityIndicator.stopAnimating()
+            }
+            .store(in: &subscriptions)
+    }
+
+    private func linkIsPresentErrorAlert() {
+        viewModel.$isPresentErrorAlert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isPresentErrorAlert in
+                guard let self = self, isPresentErrorAlert else { return }
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: self.viewModel.errorMessage,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            .store(in: &subscriptions)
+    }
 
     private func createSearchBar() {
         searchController.searchResultsUpdater = self
