@@ -9,8 +9,17 @@ import CoreData
 import Foundation
 
 protocol UserRepositoryProtocol {
+    ///  Store a user to core data.
+    ///
+    /// - Parameter user: User's data
+    /// - Parameter context: Core data context
     func store(user: UserProtocol, in context: NSManagedObjectContext)
 
+    /// Fetches the user entity with the given ID.
+    ///
+    /// - Parameter id: User identifier
+    /// - Parameter context: Core data context
+    /// - Returns: User entity
     func entity(byId id: Int, in context: NSManagedObjectContext) -> UserEntity?
 }
 
