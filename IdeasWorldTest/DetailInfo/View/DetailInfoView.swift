@@ -12,16 +12,18 @@ struct DetailInfoView: View {
     // MARK: - External Dependencies
 
     @ObservedObject var viewModel: DetailInfoViewModel
+    @EnvironmentObject var stringProvider: StringLocalizable
 
     // MARK: - Body
 
     var body: some View {
         Form {
-            section(header: "Repository name", info: viewModel.repository.name)
-            section(header: "Repository description", info: viewModel.repository.description)
-            section(header: "User's name", info: viewModel.repository.user?.name)
-            section(header: "User's email", info: viewModel.repository.user?.email)
+            section(header: stringProvider.repositoryName, info: viewModel.repository.name)
+            section(header: stringProvider.repositoryDescription, info: viewModel.repository.description)
+            section(header: stringProvider.username, info: viewModel.repository.user?.name)
+            section(header: stringProvider.userEmail, info: viewModel.repository.user?.email)
         }
+        .navigationBarTitle(Text(stringProvider.repositoryInformationTitle), displayMode: .inline)
         .navigationBarItems(trailing: favoriteButton)
         .onAppear { self.viewModel.onAppear() }
     }

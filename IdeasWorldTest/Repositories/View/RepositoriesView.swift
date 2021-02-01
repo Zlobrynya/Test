@@ -12,14 +12,15 @@ struct RepositoriesView: View {
     // MARK: - External Dependencies
 
     @ObservedObject var viewModel: RepositoriesViewModel
+    @EnvironmentObject var stringProvider: StringLocalizable
 
     // MARK: - Body
 
     var body: some View {
         NavigationView {
             main
-                .navigationBarTitle("Search", displayMode: .inline)
-                .navigationBarSearch($viewModel.search, placeholder: "Search repository")
+                .navigationBarTitle(Text(stringProvider.searchTitle), displayMode: .inline)
+                .navigationBarSearch($viewModel.search, placeholder: stringProvider.placeholderSearch)
                 .alert(isPresented: $viewModel.isPresentErrorAlert) {
                     Alert(title: Text(viewModel.errorMessage))
                 }
@@ -45,8 +46,8 @@ struct RepositoriesView: View {
     private var header: some View {
         Text(
             viewModel.favouriteRepositories
-                ? "Favourite repositories"
-                : "Search repositories"
+                ? stringProvider.favouriteRepositories
+                : stringProvider.searchRepositories
         )
     }
 
@@ -54,7 +55,7 @@ struct RepositoriesView: View {
 
     private var repositories: AnyView? {
         if viewModel.repositories.isEmpty {
-            return Text("Don't have repositories.").asAnyView()
+            return Text(stringProvider.doNotHaveRepositories).asAnyView()
         } else {
             return ForEach(Array(viewModel.repositories.enumerated()), id: \.offset) { index, item in
                 NavigationLink(
