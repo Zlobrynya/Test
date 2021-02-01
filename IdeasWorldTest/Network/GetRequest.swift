@@ -18,7 +18,8 @@ enum ErrorRequest: LocalizedError {
 protocol RequestProtocol {
     ///  Sending a request.
     func send()
-    
+
+    /// Canceling a request.
     func cancel()
 }
 
@@ -41,6 +42,7 @@ class GetRequest: RequestProtocol {
         parameters: T,
         resultHandler: NetworkResultHandler?,
         jsonEncoder: JSONEncoder = JSONEncoder(),
+        networkConstants: NetworkConstantsProtocol = NetworkConstants(),
         urlSession: URLSession = URLSession.shared
     ) throws {
         self.urlSession = urlSession
@@ -56,6 +58,7 @@ class GetRequest: RequestProtocol {
             request = URLRequest(url: url)
         }
         request.httpMethod = TypeRequest.get.rawValue
+        request.allHTTPHeaderFields?[networkConstants.authorizationHeader] = networkConstants.token
     }
 
     // MARK: - Public Properties
@@ -69,7 +72,7 @@ class GetRequest: RequestProtocol {
         )
         task?.resume()
     }
-    
+
     func cancel() {
         task?.cancel()
     }
