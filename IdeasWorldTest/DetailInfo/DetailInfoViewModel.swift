@@ -57,7 +57,6 @@ class DetailInfoViewModel: ObservableObject, UserNetworkClientResultHandler {
     // MARK: - UserNetworkClientResultHandler Conformance
 
     func userRequestDidSucceed(_ user: UserProtocol) {
-        Log.debug(user)
         DispatchQueue.main.async {
             self.repository.user = user
         }
