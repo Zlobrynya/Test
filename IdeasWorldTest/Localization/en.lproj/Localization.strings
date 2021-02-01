@@ -1,0 +1,17 @@
+/* 
+  Localization.strings
+  IdeasWorldTest
+
+  Created by Nikitin Nikita on 01.02.2021.
+  
+*/
+
+"repositoryName" = "Repository name";
+"repositoryDescription" = "Repository description";
+"userEmail" = "User's email";
+"username" = "User's name";
+"searchRepositories" = "Search repositories";
+"favouriteRepositories" = "Favourite repositories";
+"doNotHaveRepositories." = "Don't have repositories.";
+"searchTitle" = "Github search engine";
+"repositoryInformationTitle" = "Repository Information";
