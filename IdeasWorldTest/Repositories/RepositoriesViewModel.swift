@@ -18,7 +18,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     var errorMessage = "" { didSet { isPresentErrorAlert = true } }
 
     var favouriteRepositories = true
-    var isLoadMore: Bool { (page ?? 0) > 1  }
+    var isLoadMore: Bool { (page ?? 0) > 1 }
 
     var search = "" {
         didSet {
@@ -67,7 +67,7 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
     // MARK: - Public Functions
 
     func loadMore(number: Int) {
-        guard number > repositories.count - 10, !search.isEmpty else { return }
+        guard repositories.count > constants.countInPage, number > repositories.count - 10, !search.isEmpty else { return }
         page = (repositories.count / constants.countInPage) + 1
         searchRepositories()
     }
@@ -108,7 +108,9 @@ class RepositoriesViewModel: ObservableObject, RepositoriesNetworkClientResultHa
                 self.setFavouriteRepositories()
             } else {
                 self.favouriteRepositories = false
-                self.isLoading = true
+                DispatchQueue.main.async {
+                    self.isLoading = true
+                }
                 self.networkClient.repositories(
                     forName: self.search,
                     andPage: self.page,
