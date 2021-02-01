@@ -8,10 +8,16 @@
 import Foundation
 
 protocol DecoderPlistProtocol {
-    func api() -> ApiProtocol?
+    associatedtype T: Codable
+    
+    ///  Decodes the plist into a structure.
+    ///
+    /// - Parameter name: Plist's name
+    /// - Returns: Structure containing plist fields.
+    func plist(byName name: String) -> T?
 }
 
-struct DecoderPlist: DecoderPlistProtocol {
+struct DecoderPlist<T: Codable>: DecoderPlistProtocol {
 
     // MARK: - External Dependencies
 
@@ -33,11 +39,11 @@ struct DecoderPlist: DecoderPlistProtocol {
 
     // MARK: - Public Functions
 
-    func api() -> ApiProtocol? {
+    func plist(byName name: String) -> T? {
         guard
-            let path = bundle.path(forResource: "Api", ofType: "plist"),
+            let path = bundle.path(forResource: name, ofType: "plist"),
             let xml = fileManager.contents(atPath: path),
-            let api = try? propertyListDecoder.decode(Api.self, from: xml)
+            let api = try? propertyListDecoder.decode(T.self, from: xml)
         else {
             return nil
         }
