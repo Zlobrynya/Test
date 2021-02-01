@@ -8,27 +8,30 @@
 import Foundation
 
 protocol RepositoriesNetworkClientResultHandler: AnyObject {
-    ///  <#Description#>
+    
+    /// Called when repositories are received successfully.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
+    /// - Parameter repositories: An array of repositories received from the the server.
     func repositoriesRequestDidSucceed(_ repositories: [RepositoryProtocol])
 
-    ///  <#Description#>
+    /// Called when fetching the repositories failed.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
+    /// - Parameter error: Any error that occurred when trying to get repositories.
     func repositoriesRequestDidFailed(_ error: Error)
 }
 
 protocol RepositoriesNetworkClientProtocol: NetworkResultHandler {
-    ///  <#Description#>
+    /// Fetches repositories from the server.
     ///
-    /// - Parameter name: <#Parameter Description#>
-    /// - Parameter page: <#Parameter Description#>
+    /// - Parameter name: Repository name
+    /// - Parameter page: Page of request
+    /// - Parameter perPage: Number of repositories per page
     func repositories(forName name: String, andPage page: Int?, andCountPerPage perPage: Int)
 
+    ///  Canceling the request
     func cancelRequest()
 
-    ///  <#Description#>
+    /// The object that acts as the result handler for fetching repositories.
     var resultHandler: RepositoriesNetworkClientResultHandler? { get set }
 }
 

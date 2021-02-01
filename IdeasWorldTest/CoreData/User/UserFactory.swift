@@ -9,7 +9,16 @@ import CoreData
 import Foundation
 
 protocol UserFactoryProtocol {
+    /// Instantiates a new `UserEntity` in the passed `NSManagedObjectContext`.
+    ///
+    /// - Parameter context: The `NSManagedObjectContext` in which to instantiate the `UserEntity`.
+    /// - Returns: The instantiated `UserEntity`
     func entity(in context: NSManagedObjectContext) -> UserEntity
+    
+    /// Instantiates a new `UserProtocol` from the passed `UserEntity`.
+    ///
+    /// - Parameter entity: The `UserEntity`
+    /// - Returns: The instantiated `UserProtocol`
     func user(entity: UserEntity?) -> UserProtocol?
 }
 

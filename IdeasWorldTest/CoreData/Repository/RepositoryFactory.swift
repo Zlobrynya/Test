@@ -9,7 +9,16 @@ import CoreData
 import Foundation
 
 protocol RepositoryFactoryProtocol {
+    /// Instantiates a new `RepositoryEntity` in the passed `NSManagedObjectContext`.
+    ///
+    /// - Parameter context: The `NSManagedObjectContext` in which to instantiate the `RepositoryEntity`.
+    /// - Returns: The instantiated `RepositoryEntity`
     func entity(in context: NSManagedObjectContext) -> RepositoryEntity
+    
+    /// Instantiates a new `RepositoryProtocol` from the passed `RepositoryEntity`.
+    ///
+    /// - Parameter entity: The `RepositoryEntity`
+    /// - Returns: The instantiated `RepositoryProtocol`
     func repository(entity: RepositoryEntity?) -> RepositoryProtocol?
 }
 

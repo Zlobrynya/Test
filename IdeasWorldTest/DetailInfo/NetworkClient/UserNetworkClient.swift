@@ -8,25 +8,26 @@
 import Foundation
 
 protocol UserNetworkClientResultHandler: AnyObject {
-    ///  <#Description#>
+    
+    /// Called when user is received successfully.
     ///
-    /// - Parameter user: <#Parameter Description#>
+    /// - Parameter projects: An array of user received from the the server.
     func userRequestDidSucceed(_ user: UserProtocol)
 
-    ///  <#Description#>
+    /// Called when fetching the user failed.
     ///
-    /// - Parameter <#Name Parameter#>: <#Parameter Description#>
+    /// - Parameter error: Any error that occurred when trying to get user.
     func userRequestDidFailed(_ error: Error)
 }
 
 protocol UserNetworkClientProtocol: NetworkResultHandler {
 
-    ///  <#Description#>
+    ///  Fetches user from the server.
     ///
-    /// - Parameter id: <#Parameter Description#>
+    /// - Parameter username: Username
     func user(forUsername username: String)
 
-    ///  <#Description#>
+    /// The object that acts as the result handler for fetching user.
     var resultHandler: UserNetworkClientResultHandler? { get set }
 }
 
