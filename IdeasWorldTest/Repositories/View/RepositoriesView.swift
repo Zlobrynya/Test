@@ -18,8 +18,8 @@ struct RepositoriesView: View {
     var body: some View {
         NavigationView {
             main
-                .navigationBarSearch($viewModel.search, placeholder: "Search repository")
                 .navigationBarTitle("Search", displayMode: .inline)
+                .navigationBarSearch($viewModel.search, placeholder: "Search repository")
                 .alert(isPresented: $viewModel.isPresentErrorAlert) {
                     Alert(title: Text(viewModel.errorMessage))
                 }
