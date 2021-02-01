@@ -50,6 +50,11 @@
 		52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11EFC25C1F29400677012 /* UserFactory.swift */; };
 		52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */; };
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
+		52E276F325C7E129007CE312 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E276F225C7E129007CE312 /* NetworkConstants.swift */; };
+		52E276F825C7E2C2007CE312 /* Deobfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E276F725C7E2C2007CE312 /* Deobfuscator.swift */; };
+		52E276FE25C7E3DF007CE312 /* Tokens.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52E276FD25C7E3DF007CE312 /* Tokens.plist */; };
+		52E2770325C7E405007CE312 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2770225C7E405007CE312 /* Tokens.swift */; };
+		52E2770825C7E483007CE312 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2770725C7E483007CE312 /* String.swift */; };
 		52FBC03C25C43F2800C94612 /* UserRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBC03B25C43F2800C94612 /* UserRequestFactory.swift */; };
 		52FBC04725C4494A00C94612 /* DetailInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBC04625C4494A00C94612 /* DetailInfoFactory.swift */; };
 /* End PBXBuildFile section */
@@ -121,6 +126,11 @@
 		52D11EFC25C1F29400677012 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstant.swift; sourceTree = "<group>"; };
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
+		52E276F225C7E129007CE312 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		52E276F725C7E2C2007CE312 /* Deobfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deobfuscator.swift; sourceTree = "<group>"; };
+		52E276FD25C7E3DF007CE312 /* Tokens.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tokens.plist; sourceTree = "<group>"; };
+		52E2770225C7E405007CE312 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		52E2770725C7E483007CE312 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		52FBC03B25C43F2800C94612 /* UserRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestFactory.swift; sourceTree = "<group>"; };
 		52FBC04625C4494A00C94612 /* DetailInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoFactory.swift; sourceTree = "<group>"; };
 		52FBC07F25C478E200C94612 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 			children = (
 				52B315E325C325E50021EA4D /* DiContainer.swift */,
 				52B315F425C32C8E0021EA4D /* Log.swift */,
+				52E276FC25C7E3CF007CE312 /* Tokens */,
 				52B315D325C321EA0021EA4D /* Api */,
 				52B36ADB25C5DDE1000D6E77 /* Service */,
 				524BC9EC25C1C76D00754DE2 /* Extension */,
@@ -226,6 +237,7 @@
 				524BCA0A25C1CB0A00754DE2 /* General */,
 				524BCA0525C1CAE300754DE2 /* GetRequest.swift */,
 				524BCA0C25C1CB2F00754DE2 /* NetworkFactory.swift */,
+				52E276F225C7E129007CE312 /* NetworkConstants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -235,6 +247,7 @@
 			children = (
 				524BC9F625C1C93400754DE2 /* URLSession.swift */,
 				52621EF325C1D5E000AC7BAA /* Dictionary.swift */,
+				52E2770725C7E483007CE312 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -365,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				52B36ADC25C5DDE1000D6E77 /* Throttler.swift */,
+				52E276F725C7E2C2007CE312 /* Deobfuscator.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -383,6 +397,15 @@
 				52FBC07F25C478E200C94612 /* Throttler.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		52E276FC25C7E3CF007CE312 /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				52E276FD25C7E3DF007CE312 /* Tokens.plist */,
+				52E2770225C7E405007CE312 /* Tokens.swift */,
+			);
+			path = Tokens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +515,8 @@
 				524BC9AD25C1BAF800754DE2 /* LaunchScreen.storyboard in Resources */,
 				52B315D525C321FD0021EA4D /* Api.plist in Resources */,
 				524BC9AA25C1BAF800754DE2 /* Assets.xcassets in Resources */,
+				524BC9A825C1BAF600754DE2 /* Main.storyboard in Resources */,
+				52E276FE25C7E3DF007CE312 /* Tokens.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E276F325C7E129007CE312 /* NetworkConstants.swift in Sources */,
 				524BC9FC25C1C9B100754DE2 /* HTTPStatusCode.swift in Sources */,
 				524BC9A525C1BAF600754DE2 /* RepositoriesViewController.swift in Sources */,
 				52B36AF925C5FA5A000D6E77 /* DetailInfoViewController.swift in Sources */,
@@ -555,7 +581,9 @@
 				52621F2525C1EEF300AC7BAA /* User.swift in Sources */,
 				52B3160C25C339710021EA4D /* DetailInfoViewModel.swift in Sources */,
 				52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */,
+				52E2770825C7E483007CE312 /* String.swift in Sources */,
 				523CC3C825C31E4A001A118E /* RepositoriesNetworkClient.swift in Sources */,
+				52E276F825C7E2C2007CE312 /* Deobfuscator.swift in Sources */,
 				524BCA0125C1CA2000754DE2 /* NetworkingError.swift in Sources */,
 				52B3161725C3399C0021EA4D /* UserConstants.swift in Sources */,
 				52B3161F25C33B500021EA4D /* UserPlaceholder.swift in Sources */,
@@ -565,6 +593,7 @@
 				52B36ADD25C5DDE1000D6E77 /* Throttler.swift in Sources */,
 				524BCA2625C1D20400754DE2 /* RepositoriesViewModel.swift in Sources */,
 				5241D91F25C42834005A683E /* RepositoryCoreData.swift in Sources */,
+				52E2770325C7E405007CE312 /* Tokens.swift in Sources */,
 				524BCA0625C1CAE300754DE2 /* GetRequest.swift in Sources */,
 				52621F0925C1EADD00AC7BAA /* CoreDataStore.swift in Sources */,
 				52621F0F25C1EC2D00AC7BAA /* RepositoryRequestFactory.swift in Sources */,
