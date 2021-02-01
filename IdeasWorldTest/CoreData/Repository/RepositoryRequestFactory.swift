@@ -14,6 +14,9 @@ protocol RepositoryRequestFactoryProtocol {
     /// - Returns: The instantiated `NSFetchRequest<RepositoryEntity>`
     func repositories() -> NSFetchRequest<RepositoryEntity>
     
+    /// Instantiates and returns a `NSFetchRequest<RepositoryEntity>` for repository by id.
+    ///
+    /// - Returns: The instantiated `NSFetchRequest<RepositoryEntity>`
     func repository(byId id: Int) -> NSFetchRequest<RepositoryEntity>
 }
 

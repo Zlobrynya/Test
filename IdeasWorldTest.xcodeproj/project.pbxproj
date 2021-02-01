@@ -320,7 +320,6 @@
 			children = (
 				52B315D425C321FD0021EA4D /* Api.plist */,
 				52B315D925C3230B0021EA4D /* Api.swift */,
-				52B315DE25C324230021EA4D /* DecoderPlist.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -375,6 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				52D11F1025C1F56100677012 /* RepositoriesResponse.swift */,
+				52B315DE25C324230021EA4D /* DecoderPlist.swift */,
+				52B36ADC25C5DDE1000D6E77 /* Throttler.swift */,
+				52E276F725C7E2C2007CE312 /* Deobfuscator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

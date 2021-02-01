@@ -8,14 +8,28 @@
 import Foundation
 
 protocol RepositoryCoreDataProtocol {
+    ///  Saving a repository to a Core Data.
+    ///
+    /// - Parameter repository: Repository Data
     func store(_ repository: RepositoryProtocol)
 
+    ///  Getting all repositories from the Core Data
     func repository() -> [RepositoryProtocol]
 
+    ///  Getting a repository by id.
+    ///
+    /// - Parameter id: Repository's id
+    /// - Returns: Repository Data
     func repository(byId id: Int) -> RepositoryProtocol?
 
+    ///  Deleting a repository by id from Core Data.
+    ///
+    /// - Parameter id: Repository's id
     func remove(byId id: Int)
     
+    ///  Checking that such a repository exists in the Core Data.
+    ///
+    /// - Parameter id: Repository's id
     func hasRepository(byId id: Int) -> Bool
 }
 

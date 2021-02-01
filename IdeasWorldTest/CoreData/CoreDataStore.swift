@@ -9,7 +9,20 @@ import CoreData
 import Foundation
 
 protocol CoreDataStoreProtocol {
+    /// Synchronously performs the given block on the view context’s queue (main queue).
+    ///
+    /// Should be used to fetch entities for presentation.
+    /// - Parameter block: The block to perform.
+    /// - Parameter context: The view context on which the block will be executed.
     func performOnMainQueue(_ block: @escaping (_ context: NSManagedObjectContext) throws -> Void) throws
+    
+    /// Asynchronously performs the given block on a private dispatch queue and saves any changes.
+    ///
+    /// The changes are initially written to a child context of the view context. After execution of the block, the changes
+    /// are saved to the view context.
+    /// Should be used when writing to core data (creating new or updating existing entities).
+    /// - Parameter block: The block to perform.
+    /// - Parameter context: The background context on which the block will be executed.
     func performOnBackgroundQueue(_ block: @escaping (_ context: NSManagedObjectContext) -> Void)
 }
 
