@@ -1,5 +1,5 @@
 //
-//  StringLocalization.swift
+//  StringLocalizable.swift
 //  IdeasWorldTest
 //
 //  Created by Nikitin Nikita on 01.02.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StringLocalization {
+class StringLocalizable {
     var repositoryName: String {
         NSLocalizedString("repositoryName", comment: "")
     }

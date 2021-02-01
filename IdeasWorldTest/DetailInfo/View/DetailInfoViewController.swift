@@ -13,6 +13,7 @@ class DetailInfoViewController: UIViewController {
     // MARK: - Private Properties
 
     private var subscriptions = Set<AnyCancellable>()
+    private let stringLocalizable = StringLocalizable()
 
     // MARK: - External Dependencies
 
@@ -24,7 +25,7 @@ class DetailInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(stackView)
-        navigationItem.title = "Repository Information"
+        navigationItem.title = stringLocalizable.repositoryInformationTitle
         updateConstraint(view: stackView)
     }
 
@@ -38,25 +39,25 @@ class DetailInfoViewController: UIViewController {
     // MARK: - View
 
     private lazy var nameRow: RowInfoView = {
-        let row = RowInfoView(frame: view.frame, header: "Name")
+        let row = RowInfoView(frame: view.frame, header: stringLocalizable.repositoryName)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
 
     private lazy var descriptionRow: RowInfoView = {
-        let row = RowInfoView(frame: view.frame, header: "Desctiption")
+        let row = RowInfoView(frame: view.frame, header: stringLocalizable.repositoryDescription)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
 
     private lazy var userNameRow: RowInfoView = {
-        let row = RowInfoView(frame: view.frame, header: "Username")
+        let row = RowInfoView(frame: view.frame, header: stringLocalizable.username)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
 
     private lazy var emailNameRow: RowInfoView = {
-        let row = RowInfoView(frame: view.frame, header: "Email")
+        let row = RowInfoView(frame: view.frame, header: stringLocalizable.userEmail)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()

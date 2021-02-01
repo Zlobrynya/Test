@@ -13,8 +13,8 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
     // MARK: - Private Properties
 
     private var subscriptions = Set<AnyCancellable>()
-
     private let identifierTableCell = "TableViewCell"
+    private let stringLocalizable = StringLocalizable()
 
     // MARK: - External Dependencies
 
@@ -25,7 +25,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Github search engine"
+        navigationItem.title = stringLocalizable.searchTitle
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(tableView)
