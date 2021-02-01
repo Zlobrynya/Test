@@ -1,0 +1,17 @@
+/* 
+  Localization.strings
+  IdeasWorldTest
+
+  Created by Nikitin Nikita on 01.02.2021.
+  
+*/
+
+"repositoryName" = "Имя репозитория";
+"repositoryDescription" = "Описание репозитория";
+"userEmail" = "Пользовательский эмейл";
+"username" = "Имя пользователя";
+"searchRepositories" = "Поиск репозиториев";
+"favouriteRepositories" = "Избранные репозитории";
+"doNotHaveRepositories." = "Нету репозиториев";
+"searchTitle" = "Поиск по Git hub";
+"repositoryInformationTitle" = "Информация о репозитории";

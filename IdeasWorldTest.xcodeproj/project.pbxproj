@@ -46,6 +46,8 @@
 		52B3162425C33BC40021EA4D /* UserNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162325C33BC40021EA4D /* UserNetworkClient.swift */; };
 		52B3162A25C340C40021EA4D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3162925C340C40021EA4D /* UserRepository.swift */; };
 		52B36ADD25C5DDE1000D6E77 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B36ADC25C5DDE1000D6E77 /* Throttler.swift */; };
+		52B8DAE625C86E280043F524 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52B8DAE825C86E280043F524 /* Localization.strings */; };
+		52B8DAF125C86F740043F524 /* StringLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DAF025C86F740043F524 /* StringLocalization.swift */; };
 		52D11EFD25C1F29400677012 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11EFC25C1F29400677012 /* UserFactory.swift */; };
 		52D11F0225C1F3CD00677012 /* CoreDataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */; };
 		52D11F1125C1F56100677012 /* RepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D11F1025C1F56100677012 /* RepositoriesResponse.swift */; };
@@ -121,6 +123,9 @@
 		52B3162325C33BC40021EA4D /* UserNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkClient.swift; sourceTree = "<group>"; };
 		52B3162925C340C40021EA4D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		52B36ADC25C5DDE1000D6E77 /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
+		52B8DAE725C86E280043F524 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		52B8DAEC25C86E350043F524 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localization.strings; sourceTree = "<group>"; };
+		52B8DAF025C86F740043F524 /* StringLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalization.swift; sourceTree = "<group>"; };
 		52D11EFC25C1F29400677012 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		52D11F0125C1F3CD00677012 /* CoreDataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstant.swift; sourceTree = "<group>"; };
 		52D11F1025C1F56100677012 /* RepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesResponse.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 			children = (
 				52B315E325C325E50021EA4D /* DiContainer.swift */,
 				52B315F425C32C8E0021EA4D /* Log.swift */,
+				52B8DAE025C86DDB0043F524 /* Localization */,
 				52E276FC25C7E3CF007CE312 /* Tokens */,
 				52B315D325C321EA0021EA4D /* Api */,
 				52B36ADB25C5DDE1000D6E77 /* Service */,
@@ -378,6 +384,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		52B8DAE025C86DDB0043F524 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DAE825C86E280043F524 /* Localization.strings */,
+				52B8DAF025C86F740043F524 /* StringLocalization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		52D11F0F25C1F53400677012 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +496,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 524BC99425C1BAF500754DE2;
 			productRefGroup = 524BC99E25C1BAF500754DE2 /* Products */;
@@ -500,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524BC9AD25C1BAF800754DE2 /* LaunchScreen.storyboard in Resources */,
+				52B8DAE625C86E280043F524 /* Localization.strings in Resources */,
 				52B315D525C321FD0021EA4D /* Api.plist in Resources */,
 				524BC9AA25C1BAF800754DE2 /* Assets.xcassets in Resources */,
 				524BC9A825C1BAF600754DE2 /* Main.storyboard in Resources */,
@@ -570,6 +587,7 @@
 				523CC3C825C31E4A001A118E /* RepositoriesNetworkClient.swift in Sources */,
 				52E276F825C7E2C2007CE312 /* Deobfuscator.swift in Sources */,
 				524BCA0125C1CA2000754DE2 /* NetworkingError.swift in Sources */,
+				52B8DAF125C86F740043F524 /* StringLocalization.swift in Sources */,
 				52B3161725C3399C0021EA4D /* UserConstants.swift in Sources */,
 				52B3161F25C33B500021EA4D /* UserPlaceholder.swift in Sources */,
 				524BCA1225C1CC4200754DE2 /* Parameters.swift in Sources */,
@@ -641,6 +659,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		52B8DAE825C86E280043F524 /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52B8DAE725C86E280043F524 /* en */,
+				52B8DAEC25C86E350043F524 /* ru */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -648,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -709,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
